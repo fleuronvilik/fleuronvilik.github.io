@@ -194,6 +194,12 @@ section {
 .header-content .right-header p {
   line-height: 2;
 }
+@media screen and (max-height: 820px) and (min-width: 800px) {
+  .header-content .right-header {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
 
 .btn-theme {
   z-index: 10;

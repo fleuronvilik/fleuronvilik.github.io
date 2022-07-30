@@ -196,6 +196,11 @@ section {
         p {
             line-height: 2;
         }
+
+        @media screen and (max-height: 820px) and (min-width: 800px) {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
     }
 }
 
