@@ -197,7 +197,7 @@ section {
             line-height: 2;
         }
 
-        @media screen and (max-height: 820px) and (min-width: 800px) {
+        @media screen and (max-height: 820px) and (min-width: 850px) {
             padding-top: 4rem;
             padding-bottom: 4rem;
         }
@@ -233,7 +233,7 @@ section {
         pointer-events: none;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 850px) {
         width: 55px;
         height: 55px; 
         top: 2rem;
@@ -296,7 +296,7 @@ section {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .h-shape {
         display: none;
     }
@@ -312,12 +312,17 @@ section {
         grid-template-columns: initial;
         grid-template-rows: auto auto;
 
+        .left-header,
+        .right-header {
+            max-width: 540px;
+            margin: auto;
+        }
+
         .left-header {
             justify-content: flex-end;
         }
 
         .right-header {
-            // grid-row: 1;
             padding-right: initial;
         }
 
@@ -327,6 +332,22 @@ section {
 
         .name-block {
             display: initial;
+        }
+
+        @media screen and (min-width: 600px) {
+            padding-top: 1rem;
+
+            .right-header {
+                grid-row: 1;
+            }
+            .left-header {
+                margin-top: 1.5rem;
+                justify-content: flex-start;
+
+                .image {
+                    margin-left: 0;
+                }
+            }
         }
     }
 
@@ -349,6 +370,21 @@ section {
         text-align: left;
         line-height: 2;
     }
+
+    @media screen and (min-width: 600px) {
+        div.wrapper {
+            max-width: 540px;
+            margin: auto;
+        }
+
+        .main-title {
+            text-align: center;
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+    }
 }
 
 .intro {
@@ -365,4 +401,4 @@ span[data-target] {
     }
 }
 
-@import './jen'
+@import './jen';
