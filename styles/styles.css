@@ -194,7 +194,7 @@ section {
 .header-content .right-header p {
   line-height: 2;
 }
-@media screen and (max-height: 820px) and (min-width: 800px) {
+@media screen and (max-height: 820px) and (min-width: 850px) {
   .header-content .right-header {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -226,7 +226,7 @@ section {
   color: var(--grey-2);
   pointer-events: none;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .btn-theme {
     width: 55px;
     height: 55px;
@@ -282,7 +282,7 @@ section {
   display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .h-shape {
     display: none;
   }
@@ -296,6 +296,11 @@ section,
     grid-template-columns: initial;
     grid-template-rows: auto auto;
   }
+  .header-content .left-header,
+.header-content .right-header {
+    max-width: 540px;
+    margin: auto;
+  }
   .header-content .left-header {
     justify-content: flex-end;
   }
@@ -308,9 +313,28 @@ section,
   .header-content .name-block {
     display: initial;
   }
+}
+@media screen and (max-width: 850px) and (min-width: 600px) {
+  .header-content {
+    padding-top: 1rem;
+  }
+  .header-content .right-header {
+    grid-row: 1;
+  }
+  .header-content .left-header {
+    margin-top: 1.5rem;
+    justify-content: flex-start;
+  }
+  .header-content .left-header .image {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 850px) {
   .controls {
     display: none;
   }
+}
+@media screen and (max-width: 850px) {
   .main-title {
     margin-top: 1rem;
     text-align: right;
@@ -318,9 +342,23 @@ section,
   .main-title h2 {
     font-size: 2rem;
   }
+}
+@media screen and (max-width: 850px) {
   .contact .intro {
     text-align: left;
     line-height: 2;
+  }
+}
+@media screen and (max-width: 850px) and (min-width: 600px) {
+  div.wrapper {
+    max-width: 540px;
+    margin: auto;
+  }
+  .main-title {
+    text-align: center;
+  }
+  .main-title h2 {
+    font-size: 2.5rem;
   }
 }
 .intro {
@@ -331,6 +369,7 @@ section,
 span[data-target] {
   font-weight: bold;
   color: var(--secondary);
+  cursor: pointer;
 }
 span[data-target]:hover {
   border-bottom: solid var(--secondary);
@@ -375,4 +414,15 @@ span[data-target]:hover {
   margin-bottom: 1rem;
   max-width: 100%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--black);
 }/*# sourceMappingURL=styles.css.map */
