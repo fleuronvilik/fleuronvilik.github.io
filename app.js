@@ -1,14 +1,19 @@
-document
-    .querySelector(".btn-theme")
-    .addEventListener("click", function toggleTheme() {
-        const themeDark = localStorage.getItem("themeDark")
-        if (!themeDark) {
-            localStorage.setItem("themeDark", "off")
-        } else {
-            localStorage.setItem("themeDark", themeDark == "on" ? "off" : "on")
-        }
-        document.body.classList.toggle("light")
-    })
+document.querySelector(".btn-theme").addEventListener("click", toggleTheme)
+
+function setDefaultTheme() {
+    const themeDark = localStorage.getItem("themeDark")
+    if (!themeDark) {
+        localStorage.setItem("themeDark", "on")
+    } else if (themeDark == "off") {
+        document.body.classList.add("light")
+    }
+}
+
+function toggleTheme() {
+    const themeDark = localStorage.getItem("themeDark") == "on" ? "off" : "on"
+    localStorage.setItem("themeDark", themeDark)
+    document.body.classList.toggle("light")
+}
 
 function enableControls() {
     const controlElts = document.querySelectorAll(".control")
@@ -28,4 +33,5 @@ function enableControls() {
     }
 }
 
+setDefaultTheme()
 enableControls()
