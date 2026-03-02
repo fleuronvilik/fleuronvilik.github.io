@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Originaire du Bénin, installé en Allemagne. Je m'intéresse à la modélisation de systèmes applicatifs et j'écris en français pour observer ce qui tient encore quand les institutions ne portent plus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Fleuron Gnadekpa</title>
+    <meta property="og:title" content="Fleuron Gnadekpa" />
+    <meta property="og:description"
+        content="Originaire du Bénin, installé en Allemagne. Je m'intéresse à la modélisation de systèmes applicatifs et j'écris en français pour observer ce qui tient encore quand les institutions ne portent plus." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fleuronvilik.github.io" />
+    <!--
+    <meta property="og:image" content="https://fleuronvilik.github.io/img/og_banner.png" />
+    -->
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+    <main>
+        <div class="name-block">
+            <div class="name-label">— Fleuron Gnadekpa</div>
+            <h1>GDK</h1>
+        </div>
+
+        <p>Je suis originaire du Bénin, installé en Allemagne, désireux de construire une expertise technique.</p>
+        <p>J'ai commencé par le frontend. Une application déployée plus tard, j'ai réalisé que le web n'est qu'une
+            surface — et que je voulais comprendre ce qu'il y a dessous.</p>
+        <p>J'écris en français pour observer ce qui tient encore quand les institutions ne portent plus.</p>
+        <p>Trois langues m'accompagnent : le français, langue d'origine et de pensée. L'anglais, langue d'accès et de
+            technique. L'allemand — question ouverte.</p>
+        <footer>
+            <a href="https://gdkfleuron.substack.com/">Mes textes → Substack</a>
+            <a href="https://github.com/fleuronvilik/">Ce que je construis → Github</a>
+            <a href="https://linkedin.com/in/fleurongnadekpa">Me contacter → LinkedIn</a>
+        </footer>
+    </main>
+
+    <script>
+        const titles = [
+            "Pourquoi j'écris en français",
+            "Apprendre sans maître",
+            "Presque à ma place",
+            "Le temps sans cadre",
+            "Une année de fondation",
+            "Servir sans cadre",
+            "Une phrase trop large",
+            "Entrer sans vision",
+            "Rester pertinent",
+            "Rester étudiant pour rester légal",
+            "Quand aucune fin ne tient",
+            "La vie tient par le rythme",
+            "La foi, quand même",
+            "La maison comme système",
+            "La sédimentation de l'autorité",
+            "Ce qui commande quand personne ne parle",
+            "Obéir sans le nommer",
+            "L'autonomie commence quand le choix coûte",
+            "La traduction intérieure",
+            "L'excès silencieux"
+        ];
+
+        const canvas = document.getElementById('c');
+        const ctx = canvas.getContext('2d');
+
+        let W, H, nodes;
+
+        function resize() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            init();
+        }
+
+        function init() {
+            nodes = titles.map((title, i) => ({
+                title,
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.18,
+                vy: (Math.random() - 0.5) * 0.18,
+                r: Math.random() * 1.8 + 1.2,
+            }));
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+
+            // Draw lines between nearby nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 220) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = `rgba(139, 127, 212, ${0.07 * (1 - dist / 220)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Draw nodes and labels
+            nodes.forEach(n => {
+                // Star dot
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(139, 127, 212, 0.5)';
+                ctx.fill();
+
+                // Title label
+                ctx.font = '11px Poppins, sans-serif';
+                ctx.fillStyle = 'rgba(212, 208, 232, 0.22)';
+                ctx.fillText(n.title, n.x + n.r + 5, n.y + 4);
+            });
+
+            // Move nodes
+            nodes.forEach(n => {
+                n.x += n.vx;
+                n.y += n.vy;
+                if (n.x < 0 || n.x > W) n.vx *= -1;
+                if (n.y < 0 || n.y > H) n.vy *= -1;
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    </script>
+</body>
+
+</html>
