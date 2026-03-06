@@ -5,6 +5,10 @@
     list-style: none;
 }
 
+:root {
+    --accent: #8b7fd4;
+}
+
 body {
     background: #0f0f1a;
     color: #d4d0e8;
@@ -33,6 +37,16 @@ main {
     justify-content: center;
 }
 
+header {
+  margin-bottom: 3rem;
+}
+
+nav a {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 .name-block {
     margin-bottom: 2.5rem;
 }
@@ -41,7 +55,7 @@ main {
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #8b7fd4;
+    color: var(--accent);
     opacity: 0.7;
     margin-bottom: 0.5rem;
 }
@@ -62,7 +76,7 @@ h1::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #8b7fd4, transparent);
+    background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 p {
@@ -72,20 +86,65 @@ p {
 }
 
 footer {
-    margin-top: 2.5rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid rgba(212, 208, 232, 0.15);
+    gap: 1rem;
+}
+
+footer span {
+  opacity: 0.3;
 }
 
 footer a {
+    font-size: 0.95rem;
+}
+
+a {
     text-decoration: none;
-    color: #8b7fd4;
+    color: var(--accent);
     font-weight: 600;
     font-size: 1rem;
     transition: opacity 0.2s;
 }
 
-footer a:hover {
+a:hover {
     opacity: 0.7;
+}
+
+.projets h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.projets section {
+  margin-bottom: 3rem;
+}
+
+.projets section:last-of-type {
+    margin-bottom: 0;
+    /* border-bottom: 1px solid #ffffff; */
+}
+
+.projets section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.projets section ul {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projets section ul a {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
